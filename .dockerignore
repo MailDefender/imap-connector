@@ -1,0 +1,5 @@
+.vscode/**
+docker-compose-dev.yml
+validator
+Dockerfile
+.env*

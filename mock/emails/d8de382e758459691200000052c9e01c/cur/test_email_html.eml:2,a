@@ -1,0 +1,24 @@
+From: "Test Sender" <test.sender@example.org>
+To: "Recipient Test" <recipient.test@example.com>
+Subject: Test Email - HTML
+Date: Sat, 3 Jan 2026 15:00:00 +0100
+Message-ID: <html1234567890@example.org>
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass (example.org: domain of test.sender@example.org designates 192.0.2.1 as permitted sender) client-ip=192.0.2.1;
+Authentication-Results: example.org; spf=pass smtp.mailfrom=test.sender@example.org;
+       dmarc=pass header.from=example.org
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Email de test - HTML</title>
+</head>
+<body>
+    <p>Bonjour,</p>
+    <p>Ceci est un email de test au format <strong>HTML</strong>.</p>
+    <p>Cordialement,<br>L'=C3=A9quipe de test</p>
+</body>
+</html>
