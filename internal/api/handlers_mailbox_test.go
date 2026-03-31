@@ -38,7 +38,7 @@ func TestListMailbox(t *testing.T) {
 		},
 	}
 
-	tester := tdhttp.NewTestAPI(t, api.Handle())
+	tester := tdhttp.NewTestAPI(t, api.Handler())
 	for _, test := range tests {
 		tt := tester.Name(test.name).Get(test.endpoint).CmpStatus(test.expectedStatusCode)
 
