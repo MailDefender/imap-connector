@@ -1,5 +1,7 @@
+.github/**
 .vscode/**
-docker-compose-dev.yml
-validator
 Dockerfile
+.gitignore
+README.md
 .env*
+mock/**

@@ -2,16 +2,20 @@ name: CI Build
 
 on:
   push:
+    branches:
+      - "*"
   pull_request:
     branches:
       - "main"
+  workflow_call:
+    
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }} # Image name (ex: ghcr.io/<ton-org>/<ton-repo>)
 
 jobs:
-  test:
+  tests:
     name: Runs unit tests
     runs-on: ubuntu-latest
     env:
@@ -40,14 +44,14 @@ jobs:
         run: go mod download
 
       - name: Fetch dovecot image
-        run: podman pull dovecot/dovecot
+        run: podman pull dovecot/dovecot:2.4.3
 
       - name: Start dovecot
         run: |
           cd mock
           sudo chown -R 1000:1000 emails
           sudo chmod -R 777 emails
-          podman run -p 31143:31143 --name dovemock -v ./conf:/etc/dovecot/ -v ./emails:/srv/vmail/mail/ dovecot/dovecot &
+          podman run -p 31143:31143 --name dovemock -v ./conf:/etc/dovecot/ -v ./emails:/srv/vmail/mail/ dovecot/dovecot:2.4.3 &
 
       - name: Check IMAP port
         run: lsof -i :31143

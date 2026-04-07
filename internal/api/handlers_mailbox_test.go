@@ -21,12 +21,32 @@ func TestListMailbox(t *testing.T) {
 			endpoint:           "/v1/mailbox",
 			expectedStatusCode: http.StatusOK,
 			expectedJsonPayload: listMailboxesOut{
-				Count: 2,
+				Count: 6,
 				Mailboxes: models.Mailboxes{
 					models.Mailbox{
 						Name:         "recovered-lost-folder-d8de382e758459691200000052c9e01c",
 						MessageCount: 2,
 						UnseenCount:  2,
+					},
+					models.Mailbox{
+						Name:         "Drafts",
+						MessageCount: 0,
+						UnseenCount:  0,
+					},
+					models.Mailbox{
+						Name:         "Junk",
+						MessageCount: 0,
+						UnseenCount:  0,
+					},
+					models.Mailbox{
+						Name:         "Sent",
+						MessageCount: 0,
+						UnseenCount:  0,
+					},
+					models.Mailbox{
+						Name:         "Trash",
+						MessageCount: 0,
+						UnseenCount:  0,
 					},
 					models.Mailbox{
 						Name:         "INBOX",
@@ -38,7 +58,7 @@ func TestListMailbox(t *testing.T) {
 		},
 	}
 
-	tester := tdhttp.NewTestAPI(t, api.Handle())
+	tester := tdhttp.NewTestAPI(t, api.Handler())
 	for _, test := range tests {
 		tt := tester.Name(test.name).Get(test.endpoint).CmpStatus(test.expectedStatusCode)
 

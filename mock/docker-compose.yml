@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   dovecot:
-    image: dovecot/dovecot:latest
+    image: dovecot/dovecot:2.4.3
     container_name: imap-server-mock
     ports:
       - "31143:143"   # IMAP non-TLS
@@ -10,4 +10,4 @@ services:
     volumes:
       - ./conf:/etc/dovecot:ro
       - ./emails:/srv/vmail
-    restart: never
+    restart: no
