@@ -10,4 +10,4 @@ services:
     volumes:
       - ./conf:/etc/dovecot:ro
       - ./emails:/srv/vmail
-    restart: never
+    restart: no
